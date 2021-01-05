@@ -288,7 +288,7 @@ class AutoBlock(object):
         deny_file = open("/etc/hosts.deny", "w+")
         fcntl.flock(deny_file.fileno(), fcntl.LOCK_EX)
         for line in deny_lines:
-            deny_file.write(line)
+            deny_file.write(line+"\n")
         deny_file.close()
 
         self.start_line = self.file_len("/etc/hosts.deny")
