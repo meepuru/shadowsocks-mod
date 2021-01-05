@@ -314,11 +314,10 @@ class AutoBlock(object):
             while True:
                 try:
                     db_instance.auto_block_thread()
-                except Exception as e:
+                except Exception:
                     import traceback
                     trace = traceback.format_exc()
                     logging.error(trace)
-                    # logging.warn('db thread except:%s' % e)
                 if db_instance.event.wait(60):
                     break
                 if db_instance.has_stopped:
